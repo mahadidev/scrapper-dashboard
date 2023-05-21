@@ -1,9 +1,9 @@
 import { Auth } from "@/components";
 
-export default function Home() {
+export default function Singup() {
   return (
     <>
-      <Auth type="singin" />
+      <Auth type="singup" />
     </>
   );
 }
