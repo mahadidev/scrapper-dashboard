@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { BiVideoRecording } from "react-icons/bi";
+import { BiVideoRecording, BiKey } from "react-icons/bi";
 import { AiOutlineInfoCircle, AiOutlinePhone } from "react-icons/ai";
 import { TbPhone } from "react-icons/tb";
 import { Player } from "video-react";
@@ -55,6 +55,19 @@ const Tutorials = () => {
           <Player
             playsInline
             poster="https://i.ytimg.com/vi/hSL5NyyDfak/maxresdefault.jpg"
+            src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+          />
+        </>
+      ),
+    },
+    {
+      icon: <BiKey />,
+      title: "How key works?",
+      content: (
+        <>
+          <Player
+            playsInline
+            poster="https://i.ytimg.com/vi/vrgR47YKsjc/maxresdefault.jpg"
             src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
           />
         </>

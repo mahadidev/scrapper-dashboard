@@ -91,12 +91,12 @@ const LanSwitch = ({ className }: { className?: string }) => {
   return (
     <div className={`w-max ${className}`}>
       <Dropdown
-        arrowIcon={false}
+        arrowIcon={true}
         inline={true}
         label={
           <div
             data-dropdown-toggle="language-dropdown-menu"
-            className="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-gray-900 dark:text-white rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+            className="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-gray-900 rounded-lg cursor-pointer "
           >
             {lanList[selectedLan.tag].icon}
             {lanList[selectedLan.tag].label}

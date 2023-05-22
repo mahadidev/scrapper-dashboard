@@ -57,7 +57,7 @@ const OverViewBoxes = () => {
 
   return (
     <>
-      <section className="bg-red-50 pt-10">
+      <section className="pt-10">
         <div className="container">
           <div className="grid grid-cols-4 gap-4">
             {boxes?.map(

@@ -3,6 +3,9 @@
     "Aiohttp",
     "apexcharts",
     "flowbite",
+    "headlessui",
+    "hoverable",
+    "msoftex",
     "MTOOL",
     "Singin",
     "singup"

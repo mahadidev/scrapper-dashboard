@@ -14,3 +14,12 @@ export { default as Auth } from "./page/auth";
 // analytics page
 export { default as OverViewBoxes } from "./page/analytics/OverViewBoxes";
 export { default as Tutorials } from "./page/analytics/tutorials";
+
+// email scrapper page
+export { default as EmailsTable } from "./page/emails/table";
+
+// phone scrapper page
+export { default as PhonesTable } from "./page/phones/table";
+
+// support page
+export { default as SupportTimeline } from "./page/support/index";

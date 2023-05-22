@@ -48,12 +48,10 @@ const Navigation = () => {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        <Navbar.Link href="/navbars" active={true}>
-          Analytics
-        </Navbar.Link>
-        <Navbar.Link href="/about">Scrapper</Navbar.Link>
-        <Navbar.Link href="/services">Tag</Navbar.Link>
-        <Navbar.Link href="/pricing">Support</Navbar.Link>
+        <Navbar.Link href="/dashboard">Analytics</Navbar.Link>
+        <Navbar.Link href="/dashboard/email">Email</Navbar.Link>
+        <Navbar.Link href="/dashboard/phone">Phone</Navbar.Link>
+        <Navbar.Link href="/dashboard/support">Support</Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );

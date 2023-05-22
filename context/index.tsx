@@ -1,10 +1,14 @@
 "use client";
 import React, { createContext, useContext } from "react";
 import lanSlice from "./lanSlice";
+import emailSlice from "./emailSlice";
 
 const State = () => {
   // lan
   const lan = lanSlice();
+
+  // email
+  const email = emailSlice();
 
   // call default
   const contextDefaultCall = () => {
@@ -14,6 +18,7 @@ const State = () => {
   return {
     contextDefaultCall,
     ...lan,
+    ...email,
   };
 };
 

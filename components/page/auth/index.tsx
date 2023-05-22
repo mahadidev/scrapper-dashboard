@@ -12,7 +12,7 @@ const Auth = ({ type }: { type: "singin" | "singup" }) => {
     <>
       <section className="bg-blue-50">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-          <LanSwitch className="mb-4" />
+          <LanSwitch className="mb-4 hover:!bg-transparent" />
           {/* <a
             href="#"
             className="flex items-center mb-6 text-2xl font-semibold text-gray-900"
