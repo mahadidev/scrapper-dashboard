@@ -5,7 +5,7 @@ const navSlice = () => {
   // state
   const [navbarHeight, setNavbarHeight] = useState<number>(0);
   const [sidebarWidth, setSidebarWidth] = useState<number>(0);
-  const [isSidebarCollapse, setSidebarCollapse] = useState<boolean>(true);
+  const [isSidebarCollapse, setSidebarCollapse] = useState<boolean>(false);
 
   return {
     navbarHeight,

@@ -14,6 +14,7 @@ import {
 } from "react-icons/hi";
 import { Player } from "video-react";
 import "node_modules/video-react/dist/video-react.css";
+import { TextInput, Textarea, Button, SelectInput } from "@/components";
 
 const Introduction = () => {
   return (
@@ -147,7 +148,36 @@ const Membership = () => {
     </>
   );
 };
-
+const ContactTab = () => {
+  return (
+    <>
+      <h2 className="text-2xl text-gray-800">
+        Help us to improve. Report your need and give a feedback.
+      </h2>
+      <div className="py-2">
+        <hr />
+      </div>
+      <p className="text-gray-600">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+      <form className="mt-4 border p-3 rounded-md bg-white shadow-md">
+        <SelectInput label="Subject">
+          <option>Repport a bug</option>
+          <option>Request new feature</option>
+          <option>Others</option>
+        </SelectInput>
+        <Textarea label="Your message:" value="" />
+        <Button className="!w-full mt-2">Submit</Button>
+      </form>
+    </>
+  );
+};
 const TutorialTimeline = () => {
   const [selectedTab, setSelectedTab] = useState<string>("intro");
 
@@ -185,12 +215,20 @@ const TutorialTimeline = () => {
               >
                 Membership
               </ListGroup.Item>
+              <ListGroup.Item
+                onClick={() => {
+                  setSelectedTab("contact");
+                }}
+              >
+                Contact US
+              </ListGroup.Item>
             </ListGroup>
             <div className="w-full px-4 bg-white rounded-md shadow-box">
               {selectedTab === "intro" && <Introduction />}
               {selectedTab === "scrapeEmailPhone" && <ScrapeEmailPhone />}
               {selectedTab === "exportData" && <ExportData />}
               {selectedTab === "membership" && <Membership />}
+              {selectedTab === "contact" && <ContactTab />}
             </div>
           </div>
         </div>

@@ -72,14 +72,6 @@ const Navigation = () => {
                 Membership
               </Link>
             </li>
-            <li>
-              <Link
-                href="/dashboard/tutorials"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
-              >
-                Support
-              </Link>
-            </li>
             <Dropdown.Divider />
             <Dropdown.Item>Sign out</Dropdown.Item>
           </Dropdown>
