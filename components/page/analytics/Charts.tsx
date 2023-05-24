@@ -9,7 +9,7 @@ const Charts = () => {
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           <div className="w-full bg-white rounded-md shadow-box">
-            {/* <ApexChart /> */}
+            <ApexChart />
           </div>
           <div className="w-full bg-white rounded-md shadow-box">
             {/* <Pie /> */}
