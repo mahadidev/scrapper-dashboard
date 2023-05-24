@@ -12,7 +12,7 @@ const Charts = () => {
             <ApexChart />
           </div>
           <div className="w-full bg-white rounded-md shadow-box">
-            {/* <Pie /> */}
+            <Pie />
           </div>
         </div>
       </div>

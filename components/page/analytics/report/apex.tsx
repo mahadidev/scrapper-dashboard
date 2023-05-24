@@ -1,11 +1,13 @@
 "use client";
 import React from "react";
-import ReactApexChart from "react-apexcharts";
+
+import dynamic from "next/dynamic";
+const ApexCharts = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const Apex = () => {
   return (
     <div>
-      <ReactApexChart
+      <ApexCharts
         options={{
           dataLabels: {
             enabled: false,
