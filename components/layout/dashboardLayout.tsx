@@ -1,18 +1,29 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Navigation, Sidebar } from "@/components";
 import { useStateContext } from "@/context";
 
 const LayoutDashboard = ({ children }: { children: any }) => {
   // context
-  const { sidebarWidth, navbarHeight } = useStateContext();
+  const {
+    sidebarWidth,
+    navbarHeight,
+    isSidebarCollapse,
+    contextDefaultCall,
+    windowWidth,
+  } = useStateContext();
+
+  // use effect
+  useEffect(() => {
+    contextDefaultCall();
+  }, []);
 
   return (
     <>
       <Navigation />
       <div className="w-full flex relative">
         <div
-          className="w-max h-screen bg-white shadow-sm fixed top-0 left-0"
+          className="w-max h-screen bg-white shadow-sm fixed top-0 left-0  z-30"
           style={{
             paddingTop: `${navbarHeight}px`,
           }}
@@ -20,10 +31,12 @@ const LayoutDashboard = ({ children }: { children: any }) => {
           <Sidebar />
         </div>
         <div
-          className={`w-full ml-auto`}
+          className={`w-full ml-auto ${
+            windowWidth < 767 && isSidebarCollapse && "!max-w-full"
+          }`}
           style={{
-            maxWidth: `calc(100% - ${sidebarWidth}px)`,
             paddingTop: `${navbarHeight}px`,
+            maxWidth: `calc(100% - ${sidebarWidth}px)`,
           }}
         >
           {children}

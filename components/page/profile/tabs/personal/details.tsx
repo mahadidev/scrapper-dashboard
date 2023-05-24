@@ -17,9 +17,7 @@ const Details = () => {
         <h2 className="text-base text-gray-600 font-semibold flex gap-1 items-center">
           mahadi.dev.pm@gmail.com
         </h2>
-        <h2 className="text-base text-gray-600 font-semibold flex gap-1 items-center">
-          20 Trails left
-        </h2>
+        <div className="px-2 py-1 bg-gray-200 mt-2 rounded-md">20 try left</div>
       </div>
     </>
   );

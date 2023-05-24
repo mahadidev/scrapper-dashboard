@@ -17,6 +17,7 @@ import { TbPhone } from "react-icons/tb";
 import { Interface } from "readline";
 import Link from "next/link";
 import { SiAirplayvideo } from "react-icons/si";
+import { ImPriceTags } from "react-icons/im";
 
 interface MenuItemType {
   label: string;
@@ -117,7 +118,7 @@ const Sidebar = () => {
     },
     {
       label: "Membership",
-      icon: <GrUserPolice />,
+      icon: <ImPriceTags />,
       slug: "/dashboard/membership",
     },
     {

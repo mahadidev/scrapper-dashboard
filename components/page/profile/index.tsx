@@ -41,7 +41,7 @@ const ProfileTabs = () => {
                 Membership
               </ListGroup.Item>
             </ListGroup>
-            <div className="w-full px-4 bg-white rounded-md shadow-box">
+            <div className="w-full px-2 sm:px-4 rounded-md">
               {selectedTab === "personal" && <Personal />}
             </div>
           </div>

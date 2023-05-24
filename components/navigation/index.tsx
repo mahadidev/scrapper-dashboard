@@ -17,14 +17,13 @@ const Navigation = () => {
     if (navRef.current) {
       const navHeight = navRef.current.clientHeight;
       setNavbarHeight(navHeight);
-      console.log(navHeight);
     }
   });
 
   return (
     <header
       ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-30 bg-white shadow-box transition-all border-b`}
+      className={`fixed top-0 left-0 right-0 bg-white transition-all border-b z-40`}
     >
       <Navbar fluid={true} rounded={true}>
         <Navbar.Brand href="/dashboard">
@@ -49,6 +48,7 @@ const Navigation = () => {
                 rounded={true}
               />
             }
+            dismissOnClick={true}
           >
             <Dropdown.Header>
               <span className="block text-sm">Bonnie Green</span>
