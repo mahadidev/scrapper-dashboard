@@ -13,7 +13,7 @@ interface ItemType {
 
 const Breadcrumb = ({ items }: { items: ItemType[] }) => {
   return (
-    <div className="bg-white border-t px-4">
+    <div className="bg-white border-b px-4">
       <FTBreadcrumb
         aria-label="Solid background breadcrumb example"
         className="bg-transparent py-3 px-5"

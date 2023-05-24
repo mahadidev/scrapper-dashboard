@@ -25,3 +25,6 @@ export { default as PhonesTable } from "./page/phones/table";
 
 // support page
 export { default as TutorialTimeline } from "./page/tutorials/index";
+
+// profile page
+export { default as ProfileTabs } from "./page/profile";

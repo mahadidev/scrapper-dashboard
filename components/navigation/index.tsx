@@ -24,7 +24,7 @@ const Navigation = () => {
   return (
     <header
       ref={navRef}
-      className={`fixed top-0 left-0 right-0 z-30 bg-white shadow-box transition-all`}
+      className={`fixed top-0 left-0 right-0 z-30 bg-white shadow-box transition-all border-b`}
     >
       <Navbar fluid={true} rounded={true}>
         <Navbar.Brand href="/dashboard">
@@ -64,8 +64,22 @@ const Navigation = () => {
                 Profile
               </Link>
             </li>
-            <Dropdown.Item>Membership</Dropdown.Item>
-            <Dropdown.Item>Support</Dropdown.Item>
+            <li>
+              <Link
+                href="/dashboard/membership"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
+              >
+                Membership
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/dashboard/tutorials"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 "
+              >
+                Support
+              </Link>
+            </li>
             <Dropdown.Divider />
             <Dropdown.Item>Sign out</Dropdown.Item>
           </Dropdown>
