@@ -8,8 +8,8 @@ const FileUploader = () => {
     <>
       <section className="py-5">
         <div className="container">
-          <div className="w-full  bg-white rounded-md">
-            <label className="flex justify-center w-full h-32 px-4 transition border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
+          <div className="w-full py-4 px-4  bg-white rounded-md">
+            <label className="flex justify-center w-full h-32 px-4 mb-4 transition border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
               <span className="flex items-center space-x-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -32,12 +32,12 @@ const FileUploader = () => {
               </span>
               <input type="file" name="file_upload" className="hidden" />
             </label>
-            <div className="w-full py-2 px-4 flex justify-between">
+            <div className="w-full flex justify-between">
               <div>
                 <Tooltip
                   content="Watch tutorial - How it's work."
                   style="light"
-                >
+                  >
                   <Button>Watch Tutorial</Button>
                 </Tooltip>
               </div>
@@ -48,7 +48,7 @@ const FileUploader = () => {
         </div>
       </section>
     </>
-  );
+    );
 };
 
 export default FileUploader;

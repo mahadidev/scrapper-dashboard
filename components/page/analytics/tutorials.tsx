@@ -16,17 +16,8 @@ const Tutorial = ({
   content: any;
 }) => {
   return (
-    <div className="w-full px-3 py-3 rounded-md bg-white shadow-box">
-      <div className="flex gap-3 items-center">
-        <div className="text-4xl text-blue-700">{icon}</div>
-        <h1 className="text-xl text-gray-700 font-semibold">{title}</h1>
-      </div>
-      <div className="py-2">
-        <hr />
-      </div>
-      <div className="relative w-full rounded-md overflow-hidden">
-        {content}
-      </div>
+    <div className="w-full rounded-md overflow-hidden bg-white shadow-box">
+      {content}
     </div>
   );
 };
@@ -85,7 +76,7 @@ const Tutorials = () => {
         <div className="py-4">
           <hr />
         </div>
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {tutorialsData?.map((item: any, index: number) => (
             <Tutorial {...item} />
           ))}

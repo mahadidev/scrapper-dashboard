@@ -1,6 +1,8 @@
 export { default as Layout } from "./layout";
 export { default as LayoutDashboard } from "./layout/dashboardLayout";
 export { default as Navigation } from "./navigation";
+export { default as Sidebar } from "./sidebar";
+export { default as Breadcrumb } from "./breadcrumb";
 export { default as TextInput } from "./input/textInput";
 export { default as CheckBox } from "./input/checkBox";
 export { default as Button } from "./button";
@@ -22,4 +24,4 @@ export { default as EmailsTable } from "./page/emails/table";
 export { default as PhonesTable } from "./page/phones/table";
 
 // support page
-export { default as SupportTimeline } from "./page/support/index";
+export { default as TutorialTimeline } from "./page/tutorials/index";

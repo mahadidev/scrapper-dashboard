@@ -2,8 +2,12 @@
 import React, { createContext, useContext } from "react";
 import lanSlice from "./lanSlice";
 import emailSlice from "./emailSlice";
+import navSlice from "./navSlice";
 
 const State = () => {
+  // nav
+  const nav = navSlice();
+
   // lan
   const lan = lanSlice();
 
@@ -17,6 +21,7 @@ const State = () => {
 
   return {
     contextDefaultCall,
+    ...nav,
     ...lan,
     ...email,
   };
