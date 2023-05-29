@@ -223,7 +223,7 @@ const TutorialTimeline = () => {
                 Contact US
               </ListGroup.Item>
             </ListGroup>
-            <div className="w-full px-2 sm:px-4 bg-white rounded-md shadow-box">
+            <div className="w-full px-2 sm:px-4 py-4 bg-white rounded-md shadow-box">
               {selectedTab === "intro" && <Introduction />}
               {selectedTab === "scrapeEmailPhone" && <ScrapeEmailPhone />}
               {selectedTab === "exportData" && <ExportData />}

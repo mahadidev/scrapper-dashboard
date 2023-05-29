@@ -59,12 +59,9 @@ const EditDetails = () => {
           onChange={setName}
           value={name}
           placeholder=""
-          className="focus:!ring-gray-600 focus:!border-gray-600"
         />
 
-        <Button className="!w-full mt-2 !bg-gray-700 hover:!bg-gray-600 !text-white">
-          Update
-        </Button>
+        <Button className="!w-full mt-2">Update</Button>
       </div>
     </>
   );

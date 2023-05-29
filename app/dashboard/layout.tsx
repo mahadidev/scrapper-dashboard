@@ -13,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <LayoutDashboard>
-      <main className="bg-blue-50 w-full min-h-screen">{children}</main>
+      <main className="bg-gray-50 w-full min-h-screen">{children}</main>
     </LayoutDashboard>
   );
 }

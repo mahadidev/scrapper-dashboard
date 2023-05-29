@@ -38,7 +38,9 @@ const FileUploader = () => {
                   content="Watch tutorial - How it's work."
                   style="light"
                 >
-                  <Button>Watch Tutorial</Button>
+                  <Button className="!bg-gray-200 !text-gray-700 hover:!bg-gray-300 !outline-none !ring-0 !border-0">
+                    Watch Tutorial
+                  </Button>
                 </Tooltip>
               </div>
 

@@ -15,25 +15,20 @@ const ChangePassword = () => {
           onChange={setName}
           value={name}
           placeholder=""
-          className="focus:!ring-gray-600 focus:!border-gray-600"
         />
         <TextInput
           label="Password:"
           onChange={setEmail}
           value={email}
           placeholder=""
-          className="focus:!ring-gray-600 focus:!border-gray-600"
         />
         <TextInput
           label="Confirm Password:"
           onChange={setEmail}
           value={email}
           placeholder=""
-          className="focus:!ring-gray-600 focus:!border-gray-600"
         />
-        <Button className="!w-full mt-2 !bg-gray-700 hover:!bg-gray-600 !text-white">
-          Change Password
-        </Button>
+        <Button className="!w-full mt-2">Change Password</Button>
       </div>
     </>
   );

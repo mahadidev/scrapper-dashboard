@@ -103,7 +103,7 @@ const EmailsTable = () => {
       <FileUploader />
       <section className="py-5">
         <div className="container">
-          <div className="p-3 bg-white rounded-md shadow-box">
+          <div className="p-3 bg-white rounded-md">
             <div className="overflow-x-auto">
               <div className="flex gap-6 justify-between pb-4">
                 <div className="w-full flex gap-2 items-center">
@@ -140,7 +140,9 @@ const EmailsTable = () => {
                 <div className="flex gap-3 items-center">
                   {emails && (
                     <CSVLink data={emails}>
-                      <Button>Export CSV</Button>
+                      <Button className="!bg-gray-200 !text-gray-700 hover:!bg-gray-300 !outline-none !ring-0 !border-0">
+                        Export CSV
+                      </Button>
                     </CSVLink>
                   )}
                 </div>

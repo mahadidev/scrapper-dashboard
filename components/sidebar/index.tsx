@@ -9,15 +9,17 @@ import {
   AiOutlineMail,
   AiOutlinePhone,
   AiOutlineTool,
+  AiOutlineDashboard,
 } from "react-icons/ai";
 import { useStateContext } from "@/context";
 import { GrFormDown, GrFormUp, GrUserPolice } from "react-icons/gr";
 import { BiDownArrow, BiMenuAltRight } from "react-icons/bi";
 import { TbPhone } from "react-icons/tb";
-import { Interface } from "readline";
+import { HiOutlineMail } from "react-icons/hi";
 import Link from "next/link";
-import { SiAirplayvideo } from "react-icons/si";
-import { ImPriceTags } from "react-icons/im";
+import { IoMdHelp } from "react-icons/io";
+import { MdOutlineCardMembership } from "react-icons/md";
+import { FiTool } from "react-icons/fi";
 
 interface MenuItemType {
   label: string;
@@ -39,11 +41,12 @@ const MenuItem = ({ item }: { item: MenuItemType }) => {
           <button
             onClick={() => {
               setCollapse((prev) => !prev);
-              setSidebarCollapse(true);
             }}
             className="w-full flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100"
           >
-            <span className="text-xl text-gray-700">{item.icon}</span>
+            <span className="text-xl sm:text-2xl text-gray-700">
+              {item.icon}
+            </span>
             {isSidebarCollapse && <span className="ml-3">{item.label}</span>}
 
             {isSidebarCollapse && (
@@ -59,7 +62,9 @@ const MenuItem = ({ item }: { item: MenuItemType }) => {
             href={`${item.slug}`}
             className="w-full flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100"
           >
-            <span className="text-xl text-gray-700">{item.icon}</span>
+            <span className="text-xl sm:text-2xl text-gray-700">
+              {item.icon}
+            </span>
             {isSidebarCollapse && <span className="ml-3">{item.label}</span>}
           </Link>
         </>
@@ -77,7 +82,9 @@ const MenuItem = ({ item }: { item: MenuItemType }) => {
                   isSidebarCollapse ? "pl-11" : ""
                 }`}
               >
-                <span className="text-xl text-gray-700">{subItem.icon}</span>
+                <span className="text-xl sm:text-2xl text-gray-700">
+                  {subItem.icon}
+                </span>
 
                 {isSidebarCollapse && (
                   <span className="ml-3">{subItem.label}</span>
@@ -96,17 +103,17 @@ const Sidebar = () => {
   const [items, setItems] = useState<MenuItemType[]>([
     {
       label: "Dashboard",
-      icon: <MdDashboardCustomize />,
+      icon: <AiOutlineDashboard />,
       slug: "/dashboard",
     },
     {
       label: "Scrapper",
-      icon: <AiOutlineTool />,
+      icon: <FiTool />,
       slug: "/dashboard/scrappers",
       subItems: [
         {
           label: "Email",
-          icon: <AiOutlineMail />,
+          icon: <HiOutlineMail />,
           slug: "/dashboard/scrappers/email",
         },
         {
@@ -118,12 +125,12 @@ const Sidebar = () => {
     },
     {
       label: "Membership",
-      icon: <ImPriceTags />,
+      icon: <MdOutlineCardMembership />,
       slug: "/dashboard/membership",
     },
     {
       label: "Tutorials",
-      icon: <SiAirplayvideo />,
+      icon: <IoMdHelp />,
       slug: "/dashboard/tutorials",
     },
   ]);
@@ -154,10 +161,13 @@ const Sidebar = () => {
       >
         <FTSidebar.Items>
           <FTSidebar.ItemGroup>
-            <li className="flex justify-end mt-2">
+            <li className="flex items-center justify-between gap-2 mt-2 w-full text-gray-900">
+              {isSidebarCollapse && (
+                <span className="text-lg font-semibold ml-2">Sidebar</span>
+              )}
               <button
                 onClick={() => setSidebarCollapse((prev) => !prev)}
-                className="flex items-center p-2 text-gray-700 rounded-lg hover:bg-gray-100 text-xl"
+                className="flex items-center p-2 text-gray-700 rounded-lg hover:bg-gray-100 text-xl sm:text-2xl"
               >
                 {isSidebarCollapse ? <AiOutlineClose /> : <BiMenuAltRight />}
               </button>
