@@ -94,9 +94,6 @@ const EmailsTable = () => {
   });
   const [isShownEmailModal, setEmailModal] = useState<boolean>(false);
 
-  // context
-  const { setEmailModalVisibility } = useStateContext();
-
   return (
     <>
       <FileUploader />
