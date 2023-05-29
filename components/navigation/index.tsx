@@ -7,7 +7,7 @@ import { useStateContext } from "@/context";
 
 const Navigation = () => {
   // content
-  const { setNavbarHeight } = useStateContext();
+  const { setNavbarHeight, authUser, logout } = useStateContext();
 
   // ref
   const navRef = useRef<any>(null);
@@ -51,9 +51,9 @@ const Navigation = () => {
             dismissOnClick={true}
           >
             <Dropdown.Header>
-              <span className="block text-sm">Bonnie Green</span>
+              <span className="block text-sm">{authUser?.name}</span>
               <span className="block truncate text-sm font-medium">
-                name@flowbite.com
+                {authUser?.email}
               </span>
             </Dropdown.Header>
             <li>
@@ -73,7 +73,13 @@ const Navigation = () => {
               </Link>
             </li>
             <Dropdown.Divider />
-            <Dropdown.Item>Sign out</Dropdown.Item>
+            <Dropdown.Item
+              onClick={() => {
+                logout();
+              }}
+            >
+              Sign out
+            </Dropdown.Item>
           </Dropdown>
         </div>
       </Navbar>

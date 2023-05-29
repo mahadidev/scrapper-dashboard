@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import { Navigation, Sidebar } from "@/components";
 import { useStateContext } from "@/context";
+import { Context, Middleware } from "@/modules";
 
 const LayoutDashboard = ({ children }: { children: any }) => {
   // context
@@ -9,18 +10,15 @@ const LayoutDashboard = ({ children }: { children: any }) => {
     sidebarWidth,
     navbarHeight,
     isSidebarCollapse,
-    contextDefaultCall,
     windowWidth,
+    authUser,
   } = useStateContext();
-
-  // use effect
-  useEffect(() => {
-    contextDefaultCall();
-  }, []);
 
   return (
     <>
       <Navigation />
+      <Middleware />
+      <Context />
       <div className="w-full flex relative">
         <div
           className="w-max h-screen bg-white shadow-sm fixed top-0 left-0  z-30"

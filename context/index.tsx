@@ -1,9 +1,9 @@
 "use client";
 import React, { createContext, useContext } from "react";
 import lanSlice from "./lanSlice";
-import emailSlice from "./emailSlice";
 import navSlice from "./navSlice";
 import sizingSlice from "./sizingSlice";
+import authSlice from "./authSlice";
 
 const State = () => {
   // sizing
@@ -15,12 +15,13 @@ const State = () => {
   // lan
   const lan = lanSlice();
 
-  // email
-  const email = emailSlice();
+  // auth
+  const auth = authSlice();
 
   // call default
   const contextDefaultCall = () => {
     size.useEffect();
+    auth.useEffect();
   };
 
   return {
@@ -28,7 +29,7 @@ const State = () => {
     ...size,
     ...nav,
     ...lan,
-    ...email,
+    ...auth,
   };
 };
 

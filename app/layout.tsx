@@ -2,6 +2,7 @@ import { Layout } from "@/components";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { ContextProvider } from "@/context";
+import { Alert } from "@/modules";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,12 +17,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ContextProvider>
-      <html lang="en">
-        <body className={inter.className}>
-          <Layout>{children}</Layout>
-        </body>
-      </html>
-    </ContextProvider>
+    <>
+      <ContextProvider>
+        <html lang="en">
+          <body className={inter.className}>
+            <Alert />
+            <Layout>{children}</Layout>
+          </body>
+        </html>
+      </ContextProvider>
+    </>
   );
 }

@@ -12,6 +12,7 @@ const TextInput = ({
   placeholder,
   required,
   className,
+  error,
 }: {
   label: string;
   id?: string;
@@ -22,6 +23,7 @@ const TextInput = ({
   placeholder?: string;
   required?: boolean;
   className?: string;
+  error?: string | null;
 }) => {
   return (
     <div className="w-full mb-2">
@@ -39,8 +41,11 @@ const TextInput = ({
           }
         }}
         value={value}
-        className={`${className} bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 `}
+        className={`${className} ${
+          error && "ring-1 ring-red-400"
+        } bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 `}
       />
+      {error && <p className="text-red-400 text-sm mt-1">{error}</p>}
     </div>
   );
 };

@@ -51,6 +51,16 @@ export const singin = {
     fr: "Soumettre",
     bn: "লগিন করুন",
   },
+  loading: {
+    en: "Logging...",
+    fr: "Enregistrement...",
+    bn: "লগ করা হচ্ছে...",
+  },
+  success: {
+    en: "Successfully logged in.",
+    fr: "Connexion réussie.",
+    bn: "সফলভাবে লগ ইন করা হয়েছে৷",
+  },
 };
 export const singup = {
   title: {
@@ -82,5 +92,10 @@ export const singup = {
     en: "Sign up",
     fr: "Enregistrer",
     bn: "নিবন্ধন",
+  },
+  loading: {
+    en: "Creating...",
+    fr: "Créer...",
+    bn: "তৈরি করা হচ্ছে...",
   },
 };
