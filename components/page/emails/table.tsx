@@ -5,7 +5,6 @@ import { Checkbox, Dropdown, Pagination, Table } from "flowbite-react";
 import { CSVLink, CSVDownload } from "react-csv";
 import { Button } from "@/components";
 import { Dialog } from "@headlessui/react";
-import EmailModal from "./emailModal";
 import { useStateContext } from "@/context";
 import FileUploader from "./fileUploader";
 
