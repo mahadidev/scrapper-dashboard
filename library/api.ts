@@ -21,7 +21,7 @@ const Api = ({
     url: `${process.env.NEXT_PUBLIC_API_ENDPOINT}${path}`,
     data: data,
   })
-    .then(function (response: ApiResponseType) {
+    .then(function (response: ApiResponseType | any) {
       response = response.data;
       if (onSuccess) {
         onSuccess(response);
@@ -30,7 +30,7 @@ const Api = ({
         onResponse();
       }
     })
-    .catch((error: ApiErrorType) => {
+    .catch((error: ApiErrorType | any) => {
       if (error.response && error.response.data) {
         if (onSuccess) {
           onSuccess(error.response.data);
