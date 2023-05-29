@@ -3,6 +3,7 @@ import React from "react";
 import { LanSwitch, SingInForm, SingupForm } from "@/components";
 import { useStateContext } from "@/context";
 import { inputField, singin, singup } from "@/string";
+import { Middleware } from "@/modules";
 
 const Auth = ({ type }: { type: "singin" | "singup" }) => {
   // context
@@ -10,6 +11,7 @@ const Auth = ({ type }: { type: "singin" | "singup" }) => {
 
   return (
     <>
+      <Middleware type="frontend" />
       <section className="bg-gray-50">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <LanSwitch className="mb-4 hover:!bg-transparent" />

@@ -98,4 +98,9 @@ export const singup = {
     fr: "Créer...",
     bn: "তৈরি করা হচ্ছে...",
   },
+  success: {
+    en: "Successfully logged in.",
+    fr: "Connexion réussie.",
+    bn: "সফলভাবে লগ ইন করা হয়েছে৷",
+  },
 };
