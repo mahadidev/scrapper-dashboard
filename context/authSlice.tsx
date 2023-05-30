@@ -29,6 +29,29 @@ const authSlice = () => {
     localStorage.removeItem("authUser");
   };
 
+  // refresh
+  const authRefresh = ({ user }: { user: UserType }) => {
+    if (!user) {
+      Api({
+        method: "POST",
+        path: "/user/check",
+        data: {
+          token: authUser?.token,
+        },
+        token: authUser?.token,
+        onSuccess: (response: ApiResponseType) => {
+          if (response.status === 1) {
+            login({ user: response.data, onSuccess: () => {} });
+          } else {
+            logout();
+          }
+        },
+      });
+    } else {
+      login({ user: user });
+    }
+  };
+
   // use effect
   const useEffect = () => {
     var users = localStorage.getItem("authUser");
@@ -57,6 +80,7 @@ const authSlice = () => {
     login,
     logout,
     authUser,
+    authRefresh,
   };
 };
 

@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const EditDetails = () => {
   // context
-  const { authUser } = useStateContext();
+  const { authUser, authRefresh } = useStateContext();
 
   // state
   const [name, setName] = useState<string>(authUser?.name ? authUser.name : "");
@@ -37,6 +37,7 @@ const EditDetails = () => {
         if (response.status === 1) {
           setResponseStatus(1);
           toast.success(response.message);
+          authRefresh(response.data);
         } else {
           if (response.errors) {
             if (response.message) {
