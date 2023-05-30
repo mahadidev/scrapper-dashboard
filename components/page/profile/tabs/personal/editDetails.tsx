@@ -1,30 +1,63 @@
 "use client";
 import { TextInput, Button } from "@/components";
+import { useStateContext } from "@/context";
+import { Api } from "@/library";
+import { ApiErrorType, ApiResponseType, ApiTextType } from "@/types";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const EditDetails = () => {
+  // context
+  const { authUser } = useStateContext();
+
   // state
-  const [name, setName] = useState<string>("Mahadi Hasan");
-  const [email, setEmail] = useState<string>("mahadi.dev.pm@gmail.com");
+  const [name, setName] = useState<string>(authUser?.name ? authUser.name : "");
+  const [nameError, setNameError] = useState<string | null>(null);
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const [responseMessage, setResponseMessage] = useState<ApiTextType | null>(
+    null
+  );
+  const [responseStatus, setResponseStatus] = useState<number | null>(null);
+
+  // on submit
+  const onSubmit = () => {
+    // set loader
+    setLoading(true);
+
+    const object = {
+      name: name,
+    };
+
+    Api({
+      path: "/user/update",
+      data: object,
+      method: "POST",
+      token: authUser?.token,
+      onSuccess: (response: ApiResponseType) => {
+        if (response.status === 1) {
+          setResponseStatus(1);
+          toast.success(response.message);
+        } else {
+          if (response.errors) {
+            if (response.message) {
+              setResponseMessage({ text: response.message });
+            }
+            setNameError(response.errors?.name);
+          }
+        }
+      },
+      onError: (response: ApiErrorType) => {
+        console.log(response);
+      },
+      onResponse: () => {
+        // set loader
+        setLoading(false);
+      },
+    });
+  };
 
   return (
     <>
-      {/* <div className="w-full max-w-[300px] h-auto mx-auto relative rounded overflow-hidden">
-        <img
-          className="w-full h-full object-cover object-top"
-          src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-          alt="Extra large avatar"
-        />
-        <div className="w-full h-full absolute top-0 left-0 flex justify-center items-end">
-          <button className="text-3xl bg-white text-gray-800 rounded-full overflow-hidden relative mb-4 p-3">
-            <MdCameraAlt />
-            <input
-              type="file"
-              className="w-full h-full absolute top-0 left-0 opacity-0"
-            />
-          </button>
-        </div>
-      </div> */}
       <div className="w-full">
         <p className="text-sm font-medium text-gray-900 dark:text-gray-300 mb-2">
           Profile Picture:
@@ -56,12 +89,19 @@ const EditDetails = () => {
         </div>
         <TextInput
           label="Your Name:"
-          onChange={setName}
+          onChange={(val: string) => {
+            setName(val);
+            setNameError(null);
+            setResponseMessage(null);
+            setResponseStatus(null);
+          }}
           value={name}
-          placeholder=""
+          placeholder="Your Name"
         />
 
-        <Button className="!w-full mt-2">Update</Button>
+        <Button className="!w-full mt-2" onClick={onSubmit}>
+          {isLoading ? "Updating..." : "Update"}
+        </Button>
       </div>
     </>
   );

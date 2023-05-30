@@ -1,3 +1,4 @@
+"use client";
 import { ApiResponseType, ApiErrorType } from "@/types";
 import axios from "axios";
 
@@ -8,6 +9,7 @@ const Api = ({
   onSuccess,
   onError,
   onResponse,
+  token,
 }: {
   method?: string;
   path: string;
@@ -15,11 +17,15 @@ const Api = ({
   onSuccess?: CallableFunction;
   onError?: CallableFunction;
   onResponse?: CallableFunction;
+  token?: string;
 }) => {
   axios({
     method: method,
     url: `${process.env.NEXT_PUBLIC_API_ENDPOINT}${path}`,
     data: data,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   })
     .then(function (response: ApiResponseType | any) {
       response = response.data;

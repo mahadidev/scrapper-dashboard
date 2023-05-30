@@ -4,6 +4,7 @@ import { ListGroup } from "flowbite-react";
 import Personal from "./tabs/personal";
 
 const ProfileTabs = () => {
+  // state
   const [selectedTab, setSelectedTab] = useState<string>("personal");
 
   return (

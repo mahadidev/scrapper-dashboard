@@ -29,11 +29,11 @@ const Navigation = () => {
         <Navbar.Brand href="/dashboard">
           <img
             className="w-8 h-8 mr-2"
-            src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
+            src="/assets/images/logo.png"
             alt="logo"
           />
           <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-            MDEVI
+            {process.env.NEXT_PUBLIC_APP_NAME}
           </span>
         </Navbar.Brand>
         <div className="flex gap-4 md:order-2 items-center">

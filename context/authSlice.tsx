@@ -1,5 +1,6 @@
 "use client";
-import { UserType } from "@/types";
+import { Api } from "@/library";
+import { ApiResponseType, UserType } from "@/types";
 import React, { useState } from "react";
 
 const authSlice = () => {
@@ -12,12 +13,14 @@ const authSlice = () => {
     onSuccess,
   }: {
     user: UserType;
-    onSuccess: CallableFunction;
+    onSuccess?: CallableFunction;
   }) => {
     setAuthUser(user);
     localStorage.setItem("authUser", JSON.stringify(user));
 
-    onSuccess();
+    if (onSuccess) {
+      onSuccess();
+    }
   };
 
   // logout
@@ -28,9 +31,24 @@ const authSlice = () => {
 
   // use effect
   const useEffect = () => {
-    const users = localStorage.getItem("authUser");
+    var users = localStorage.getItem("authUser");
     if (users) {
-      setAuthUser(JSON.parse(users));
+      login({ user: JSON.parse(users) });
+      Api({
+        method: "POST",
+        path: "/user/check",
+        data: {
+          token: JSON.parse(users) ? JSON.parse(users).token : null,
+        },
+        token: JSON.parse(users) ? JSON.parse(users).token : null,
+        onSuccess: (response: ApiResponseType) => {
+          if (response.status === 1) {
+            login({ user: response.data, onSuccess: () => {} });
+          } else {
+            logout();
+          }
+        },
+      });
     }
   };
 

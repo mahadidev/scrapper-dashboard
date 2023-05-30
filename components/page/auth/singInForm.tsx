@@ -15,15 +15,16 @@ const SingInForm = () => {
   // context
   const { selectedLan, login } = useStateContext();
   // state
-  const [isLoading, setLoading] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [isLoading, setLoading] = useState<boolean>(false);
   const [emailError, setEmailError] = useState<string | null>(null);
   const [passwordError, setPasswordError] = useState<string | null>(null);
   const [responseMessage, setResponseMessage] = useState<ApiTextType | null>(
     null
   );
   const [responseStatus, setResponseStatus] = useState<number | null>(null);
+
   // navigator
   const { push } = useRouter();
   // on submit
