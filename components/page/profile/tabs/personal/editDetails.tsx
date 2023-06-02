@@ -60,10 +60,10 @@ const EditDetails = () => {
   return (
     <>
       <div className="w-full">
-        <p className="text-sm font-medium text-gray-900 dark:text-gray-300 mb-2">
+        <p className="text-sm font-medium text-gray-900 dark:text-gray-300 mb-2 hidden">
           Profile Picture:
         </p>
-        <div className="w-full  bg-white rounded-md">
+        <div className="w-full  bg-white rounded-md hidden">
           <label className="flex justify-center w-full h-32 px-4 mb-4 transition border-2 border-gray-300 border-dashed rounded-md appearance-none cursor-pointer hover:border-gray-400 focus:outline-none">
             <span className="flex items-center space-x-2">
               <svg
@@ -85,7 +85,9 @@ const EditDetails = () => {
                 <span className="text-blue-600 underline">browse</span>
               </span>
             </span>
-            <input type="file" name="file_upload" className="hidden" />
+            <input type="file" name="file_upload" className="hidden" onChange={(e) => {
+              console.log(e.target.value)
+            }} />
           </label>
         </div>
         <TextInput

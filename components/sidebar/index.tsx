@@ -109,19 +109,16 @@ const Sidebar = () => {
     {
       label: "Scrapper",
       icon: <FiTool />,
-      slug: "/dashboard/scrappers",
-      subItems: [
-        {
-          label: "Email",
-          icon: <HiOutlineMail />,
-          slug: "/dashboard/scrappers/email",
-        },
-        {
-          label: "Phone",
-          icon: <TbPhone />,
-          slug: "/dashboard/scrappers/phone",
-        },
-      ],
+      slug: "/dashboard/scrappers"
+    },
+    {
+      label: "Email",
+      icon: <HiOutlineMail />,
+      slug: "/dashboard/scrappers/email",
+    },        {
+      label: "Phone",
+      icon: <TbPhone />,
+      slug: "/dashboard/scrappers/phone",
     },
     {
       label: "Membership",
