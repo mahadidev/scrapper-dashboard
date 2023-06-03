@@ -25,6 +25,7 @@ const Api = ({
     data: data,
     headers: {
       Authorization: `Bearer ${token}`,
+      'Content-Type': 'multipart/form-data'
     },
   })
     .then(function (response: ApiResponseType | any) {

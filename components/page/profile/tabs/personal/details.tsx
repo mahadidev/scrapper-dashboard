@@ -1,8 +1,6 @@
 "use client";
 import { useStateContext } from "@/context";
 import React from "react";
-import { MdCameraAlt, MdVerifiedUser } from "react-icons/md";
-import { RxCounterClockwiseClock } from "react-icons/rx";
 
 const Details = () => {
   // context
@@ -23,7 +21,7 @@ const Details = () => {
         <h2 className="text-base text-gray-600 font-semibold flex gap-1 items-center">
           {authUser?.email}
         </h2>
-        <div className="px-2 py-1 bg-gray-200 mt-2 rounded-md">20 try left</div>
+        <div className="px-2 py-1 bg-gray-200 mt-2 rounded-md">{authUser?.plan?.requests_available} try left</div>
       </div>
     </>
   );

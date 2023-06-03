@@ -1,9 +1,41 @@
+"use client";
 import { Button } from "@/components";
+import { useStateContext } from "@/context";
+import { Api } from "@/library";
+import { ApiErrorType, ApiResponseType } from "@/types";
 import { Tooltip } from "flowbite-react";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const FileUploader = () => {
+  // context
+  const { authUser } = useStateContext();
+  // state
+  const [file, setFile] = useState<any>();
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const onSubmit = () => {
+    if (file) {
+      setLoading(true);
+      Api({
+        path: "/scrapper/email",
+        method: "POST",
+        token: authUser?.token,
+        data: {
+          sheet: file[0],
+          type: "email"
+        },
+        onSuccess: (response: ApiResponseType) => {
+          console.log(response);
+        },
+        onError: (error: ApiErrorType) => {
+          console.log(error);
+        },
+        onResponse: () => {
+          setLoading(false);
+        },
+      });
+    }
+  };
   return (
     <>
       <section className="py-5">
@@ -30,7 +62,15 @@ const FileUploader = () => {
                   <span className="text-blue-600 underline">browse</span>
                 </span>
               </span>
-              <input type="file" name="file_upload" className="hidden" />
+              <input
+                type="file"
+                name="file_upload"
+                className="hidden"
+                onChange={(e: any) => {
+                  setFile(e.target.files);
+                }}
+                accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+              />
             </label>
             <div className="w-full flex justify-between">
               <div>
@@ -44,7 +84,9 @@ const FileUploader = () => {
                 </Tooltip>
               </div>
 
-              <Button>Scrape</Button>
+              <Button onClick={onSubmit} disable={isLoading}>
+                {isLoading ? "Scrapping" : "Scrape"}
+              </Button>
             </div>
           </div>
         </div>

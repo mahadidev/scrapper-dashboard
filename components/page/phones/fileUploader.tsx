@@ -1,9 +1,41 @@
+"use client";
 import { Button } from "@/components";
+import { useStateContext } from "@/context";
+import { Api } from "@/library";
+import { ApiErrorType, ApiResponseType } from "@/types";
 import { Tooltip } from "flowbite-react";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const FileUploader = () => {
+  // context
+  const { authUser } = useStateContext();
+  // state
+  const [file, setFile] = useState<any>();
+  const [isLoading, setLoading] = useState<boolean>(false);
+  const onSubmit = () => {
+    if (file) {
+      setLoading(true);
+      Api({
+        path: "/scrapper/email",
+        method: "POST",
+        token: authUser?.token,
+        data: {
+          sheet: file[0],
+          type: "phone"
+        },
+        onSuccess: (response: ApiResponseType) => {
+          console.log(response);
+        },
+        onError: (error: ApiErrorType) => {
+          console.log(error);
+        },
+        onResponse: () => {
+          setLoading(false);
+        },
+      });
+    }
+  };
   return (
     <>
       <section className="py-5">
@@ -17,11 +49,11 @@ const FileUploader = () => {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
-                  stroke-width="2"
+                  strokeWidth="2"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                   />
                 </svg>
@@ -30,7 +62,15 @@ const FileUploader = () => {
                   <span className="text-blue-600 underline">browse</span>
                 </span>
               </span>
-              <input type="file" name="file_upload" className="hidden" />
+              <input
+                type="file"
+                name="file_upload"
+                className="hidden"
+                onChange={(e: any) => {
+                  setFile(e.target.files);
+                }}
+                accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+              />
             </label>
             <div className="w-full flex justify-between">
               <div>
@@ -44,7 +84,9 @@ const FileUploader = () => {
                 </Tooltip>
               </div>
 
-              <Button>Scrape</Button>
+              <Button onClick={onSubmit} disable={isLoading}>
+                {isLoading ? "Scrapping" : "Scrape"}
+              </Button>
             </div>
           </div>
         </div>

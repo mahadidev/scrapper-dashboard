@@ -51,10 +51,10 @@ const SingInForm = () => {
             },
           });
         } else {
+          if (response.message) {
+            setResponseMessage({ text: response.message });
+          }
           if (response.errors) {
-            if (response.message) {
-              setResponseMessage({ text: response.message });
-            }
             setEmailError(response.errors?.email);
             setPasswordError(response.errors?.password);
           }

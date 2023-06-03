@@ -1,98 +1,120 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Checkbox, Dropdown, Pagination, Table } from "flowbite-react";
 import { CSVLink, CSVDownload } from "react-csv";
 import { Button } from "@/components";
 import { Dialog } from "@headlessui/react";
 import { useStateContext } from "@/context";
 import FileUploader from "./fileUploader";
+import { Api } from "@/library";
+import { ApiResponseType } from "@/types";
+import { errorToJSON } from "next/dist/server/render";
 
 interface EmailType {
   id: number;
-  email: string;
-  company: string;
+  value: string;
+  url: string;
 }
 
 interface SortType {
   label: string;
   id: number;
+  value: string;
+  dir: string;
 }
 
 const EmailsTable = () => {
+  // context
+  const { authUser } = useStateContext();
   // state
-  const [emails, setEmails] = useState<EmailType[] | null>([
-    {
-      id: 1,
-      email: "test@example.com",
-      company: "msoftex.com",
-    },
-    {
-      id: 2,
-      email: "test@example.com",
-      company: "msoftex.com",
-    },
-    {
-      id: 3,
-      email: "test@example.com",
-      company: "msoftex.com",
-    },
-    {
-      id: 3,
-      email: "test@example.com",
-      company: "msoftex.com",
-    },
-    {
-      id: 3,
-      email: "test@example.com",
-      company: "msoftex.com",
-    },
-    {
-      id: 3,
-      email: "test@example.com",
-      company: "msoftex.com",
-    },
-    {
-      id: 3,
-      email: "test@example.com",
-      company: "msoftex.com",
-    },
-    {
-      id: 3,
-      email: "test@example.com",
-      company: "msoftex.com",
-    },
-    {
-      id: 3,
-      email: "test@example.com",
-      company: "msoftex.com",
-    },
-    {
-      id: 3,
-      email: "test@example.com",
-      company: "msoftex.com",
-    },
-  ]);
+  const [emails, setEmails] = useState<EmailType[] | null>(null);
+  const [totalPages, setTotalPages] = useState<number>(0);
+  const [currentPage, setCurrentPage] = useState<number>(0);
   const [selectedEmails, setSelectedEmails] = useState<EmailType[]>([]);
   const [sortItems, setSortItems] = useState<SortType[]>([
     {
       id: 1,
       label: "ID",
+      value: "id",
+      dir: "asc",
     },
     {
       id: 2,
-      label: "Email",
+      label: "ID",
+      value: "id",
+      dir: "desc",
     },
     {
       id: 3,
+      label: "Email",
+      value: "value",
+      dir: "asc",
+    },
+    {
+      id: 4,
+      label: "Email",
+      value: "value",
+      dir: "desc",
+    },
+    {
+      id: 5,
       label: "Company",
+      value: "url",
+      dir: "asc",
+    },
+    {
+      id: 6,
+      label: "Company",
+      value: "url",
+      dir: "desc",
     },
   ]);
   const [sortSelected, setSortSelected] = useState<SortType>({
     id: 1,
     label: "ID",
+    value: "id",
+    dir: "asc",
   });
   const [isShownEmailModal, setEmailModal] = useState<boolean>(false);
+
+  const fetchRow = ({
+    page,
+    sortBy,
+    sortDir,
+    query,
+  }: {
+    page?: number;
+    sortBy?: string;
+    sortDir?: string;
+    query?: string;
+  }) => {
+    Api({
+      path: `/scrapped-data?page=${
+        page ? page : currentPage
+      }&${query}&orderBy=${sortBy ? sortBy : sortSelected.value}&orderDir=${
+        sortDir ? sortDir : sortSelected.dir
+      }`,
+      token: authUser?.token,
+      onSuccess: (response: ApiResponseType) => {
+        if (response.data) {
+          setEmails(response.data);
+        }
+        if (response.meta) {
+          setTotalPages(response.meta?.last_page ? response.meta.last_page : 0);
+        }
+        if (response.meta) {
+          setCurrentPage(
+            response.meta?.current_page ? response.meta.current_page : 0
+          );
+        }
+      },
+    });
+  };
+
+  useEffect(() => {
+    fetchRow({});
+  }, []);
 
   return (
     <>
@@ -112,7 +134,7 @@ const EmailsTable = () => {
                         data-dropdown-toggle="language-dropdown-menu"
                         className="inline-flex items-center font-medium justify-center px-4 py-2 text-sm text-gray-900 rounded-lg cursor-pointer "
                       >
-                        {sortSelected.label}
+                        {sortSelected.label} ({sortSelected.dir})
                       </div>
                     }
                     onChange={(e) => {
@@ -125,10 +147,14 @@ const EmailsTable = () => {
                       <Dropdown.Item
                         onClick={() => {
                           setSortSelected(item);
+                          fetchRow({
+                            sortBy: item.value,
+                            sortDir: item.dir,
+                          });
                         }}
                         key={index}
                       >
-                        {item.label}
+                        {item.label} {item.dir}
                       </Dropdown.Item>
                     ))}
                   </Dropdown>
@@ -161,7 +187,7 @@ const EmailsTable = () => {
                     </Table.HeadCell>
                     <Table.HeadCell>ID</Table.HeadCell>
                     <Table.HeadCell>Email</Table.HeadCell>
-                    <Table.HeadCell>Company</Table.HeadCell>
+                    <Table.HeadCell>URL</Table.HeadCell>
                     <Table.HeadCell>
                       <span className="sr-only">Edit</span>
                     </Table.HeadCell>
@@ -200,8 +226,8 @@ const EmailsTable = () => {
                           <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                             {item.id}
                           </Table.Cell>
-                          <Table.Cell>{item.email}</Table.Cell>
-                          <Table.Cell>{item.company}</Table.Cell>
+                          <Table.Cell>{item.value}</Table.Cell>
+                          <Table.Cell>{item.url}</Table.Cell>
                           <Table.Cell>
                             <a
                               href="/tables"
@@ -217,10 +243,10 @@ const EmailsTable = () => {
                 <div className="py-4">
                   <Pagination
                     className="w-max mx-auto text-center"
-                    currentPage={1}
-                    totalPages={100}
+                    currentPage={currentPage}
+                    totalPages={totalPages}
                     onPageChange={(e) => {
-                      console.log(e);
+                      fetchRow({ page: e });
                     }}
                   />
                 </div>
