@@ -14,12 +14,12 @@ const TextInput = ({
   className,
   error,
 }: {
-  label: string;
+  label?: string;
   id?: string;
   name?: string;
   onChange?: CallableFunction;
   type?: string;
-  value: string;
+  value?: string;
   placeholder?: string;
   required?: boolean;
   className?: string;
@@ -27,11 +27,13 @@ const TextInput = ({
 }) => {
   return (
     <div className="w-full mb-2">
-      <div className="mb-2 block">
-        <Label htmlFor={label} value={label} />
-      </div>
+      {label && (
+        <div className="mb-2 block">
+          <Label htmlFor={label} value={label} />
+        </div>
+      )}
       <input
-        id={label}
+        id={label ? label : "input"}
         type={type ? type : "text"}
         placeholder={placeholder}
         required={required}

@@ -10,6 +10,7 @@ const Api = ({
   onError,
   onResponse,
   token,
+  timeout,
 }: {
   method?: string;
   path: string;
@@ -18,6 +19,7 @@ const Api = ({
   onError?: CallableFunction;
   onResponse?: CallableFunction;
   token?: string;
+  timeout?: number;
 }) => {
   axios({
     method: method,
@@ -25,7 +27,8 @@ const Api = ({
     data: data,
     headers: {
       Authorization: `Bearer ${token}`,
-      'Content-Type': 'multipart/form-data'
+      "Content-Type": "multipart/form-data",
+      timeout: timeout,
     },
   })
     .then(function (response: ApiResponseType | any) {

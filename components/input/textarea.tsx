@@ -13,23 +13,25 @@ const TextInput = ({
   required,
   className,
 }: {
-  label: string;
+  label?: string;
   id?: string;
   name?: string;
   onChange?: CallableFunction;
   type?: string;
-  value: string;
+  value?: string;
   placeholder?: string;
   required?: boolean;
   className?: string;
 }) => {
   return (
     <div className="w-full mb-2">
-      <div className="mb-2 block">
-        <Label htmlFor={label} value={label} />
-      </div>
+      {label && (
+        <div className="mb-2 block">
+          <Label htmlFor={label} value={label} />
+        </div>
+      )}
       <textarea
-        id={label}
+        id={label ? label : "textarea"}
         placeholder={placeholder}
         required={required}
         onChange={(e) => {

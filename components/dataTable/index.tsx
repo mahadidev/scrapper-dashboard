@@ -51,7 +51,9 @@ const DataTable = ({
   }) => {
     Api({
       path: `${apiPath}?page=${page ? page : currentPage}&${
-        query ? query : `${searchKey ? searchKey : "id"}=${searchText}`
+        query
+          ? query
+          : `${searchKey && searchText ? searchKey : ""}=${searchText}`
       }&orderBy=${sort ? sort : sortBy?.value ? sortBy.value : "id"}&orderDir=${
         sortDir ? sortDir : sortBy?.dir ? sortBy.dir : "asc"
       }`,

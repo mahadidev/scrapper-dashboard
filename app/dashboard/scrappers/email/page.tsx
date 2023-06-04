@@ -1,5 +1,6 @@
 "use client";
 import { Breadcrumb, DataTable } from "@/components";
+import EmailsInterface from "@/components/page/emailsInterface";
 import React from "react";
 import { HiHome } from "react-icons/hi";
 
@@ -23,29 +24,7 @@ const Email = () => {
           },
         ]}
       />
-      <DataTable
-        columns={[
-          {
-            label: "ID",
-            value: "id",
-          },
-          {
-            label: "Email",
-            value: "value",
-          },
-          {
-            label: "URL",
-            value: "url",
-          },
-          {
-            label: "Created",
-            value: "created_at",
-          },
-        ]}
-        searchKey="url"
-        apiPath="/scrapped-data/fetch/email"
-        exportApiPath="/scrapped-data/email"
-      />
+      <EmailsInterface />
     </>
   );
 };

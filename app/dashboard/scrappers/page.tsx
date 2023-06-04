@@ -1,11 +1,28 @@
+"use client";
+import { Breadcrumb, DataTable } from "@/components";
+import { ScrappersInterface } from "@/components";
 import React from "react";
+import { HiHome } from "react-icons/hi";
 
-const ScrappersPage = () => {
+const ScrapperPage = () => {
   return (
     <>
-      <h1>Coming Soon</h1>
+      <Breadcrumb
+        items={[
+          {
+            label: "Home",
+            icon: <HiHome />,
+            slug: "/dashboard",
+          },
+          {
+            label: "Scrappers",
+            slug: "/dashboard/scrappers",
+          },
+        ]}
+      />
+      <ScrappersInterface />
     </>
   );
 };
 
-export default ScrappersPage;
+export default ScrapperPage;
