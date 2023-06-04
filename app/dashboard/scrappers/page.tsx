@@ -1,7 +1,11 @@
 import React from "react";
 
 const ScrappersPage = () => {
-  return <div>ScrappersPage</div>;
+  return (
+    <>
+      <h1>Coming Soon</h1>
+    </>
+  );
 };
 
 export default ScrappersPage;

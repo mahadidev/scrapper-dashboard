@@ -1,5 +1,5 @@
 "use client";
-import { PhonesTable, Breadcrumb } from "@/components";
+import { DataTable, Breadcrumb } from "@/components";
 import React from "react";
 import { HiHome } from "react-icons/hi";
 
@@ -23,7 +23,29 @@ const Phone = () => {
           },
         ]}
       />
-      <PhonesTable />
+      <DataTable
+        columns={[
+          {
+            label: "ID",
+            value: "id",
+          },
+          {
+            label: "Phone",
+            value: "value",
+          },
+          {
+            label: "URL",
+            value: "url",
+          },
+          {
+            label: "Created",
+            value: "created_at",
+          },
+        ]}
+        searchKey="url"
+        apiPath="/scrapped-data/fetch/phone"
+        exportApiPath="/scrapped-data/phone"
+      />
     </>
   );
 };

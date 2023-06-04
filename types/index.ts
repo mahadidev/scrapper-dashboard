@@ -43,3 +43,14 @@ export interface ApiResponseType {
 export interface ApiErrorType {
   response: ApiResponseType;
 }
+
+export interface TableColumnType {
+  label: string;
+  value: string;
+}
+
+export interface TableSortItemType {
+  label: string;
+  value: string;
+  dir: "asc" | "desc";
+}

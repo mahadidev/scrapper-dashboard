@@ -9,6 +9,7 @@ export { default as SelectInput } from "./input/selectInput";
 export { default as CheckBox } from "./input/checkBox";
 export { default as Button } from "./button";
 export { default as LanSwitch } from "./lanSwitch";
+export { default as DataTable } from "./dataTable";
 
 // auth page
 export { default as SingInForm } from "./page/auth/singInForm";
@@ -20,10 +21,8 @@ export { default as Charts } from "./page/analytics/Charts";
 export { default as Tutorials } from "./page/analytics/tutorials";
 
 // email scrapper page
-export { default as EmailsTable } from "./page/emails/table";
 
 // phone scrapper page
-export { default as PhonesTable } from "./page/phones/table";
 
 // support page
 export { default as TutorialTimeline } from "./page/tutorials/index";
