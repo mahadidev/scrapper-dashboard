@@ -32,7 +32,7 @@ const DataTable = ({
     TableColumnType[] | null | null
   >(null);
   const [sortItems, setSortItems] = useState<TableSortItemType[]>([]);
-  const [sortBy, setSortBy] = useState<TableSortItemType>();
+  const [sortBy, setSortBy] = useState<TableSortItemType | null>(null);
   const [searchText, setSearchText] = useState<any | null>(null);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(0);
@@ -87,7 +87,14 @@ const DataTable = ({
     });
   };
 
-  const onChangeSort = () => {};
+  const onChangeSort = (sort: TableSortItemType) => {
+    setSortBy(sort);
+
+    fetchData({
+      sort: sort.value,
+      sortDir: sort.dir,
+    });
+  };
 
   useEffect(() => {
     // set sort items
@@ -123,7 +130,6 @@ const DataTable = ({
               <Header
                 sortItems={sortItems}
                 sortBy={sortBy}
-                setSortBy={setSortBy}
                 onChangeSort={onChangeSort}
                 searchText={searchText}
                 setSearchText={setSearchText}

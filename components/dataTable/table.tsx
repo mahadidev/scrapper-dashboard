@@ -38,7 +38,7 @@ const Table = ({
           </FBTable.HeadCell>
         </FBTable.Head>
         <FBTable.Body className="divide-y">
-          {tableItems &&
+          {tableItems ? (
             tableItems.map((item: any, index: number) => (
               <FBTable.Row
                 className="bg-white dark:border-gray-700 dark:bg-gray-800"
@@ -80,7 +80,20 @@ const Table = ({
                   </a>
                 </FBTable.Cell>
               </FBTable.Row>
-            ))}
+            ))
+          ) : (
+            <>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item: number) => (
+                <FBTable.Row key={item}>
+                  <FBTable.Cell colSpan={columns.length + 2}>
+                    <div className="animate-pulse">
+                      <div className="w-full h-4 bg-gray-200 rounded"></div>
+                    </div>
+                  </FBTable.Cell>
+                </FBTable.Row>
+              ))}
+            </>
+          )}
         </FBTable.Body>
       </FBTable>
     </>

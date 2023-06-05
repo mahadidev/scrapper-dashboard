@@ -2,11 +2,11 @@ import React from "react";
 import Sort from "./sort";
 import Search from "./search";
 import Export from "./export";
+import { TableSortItemType } from "@/types";
 
 const Header = ({
   sortItems,
   sortBy,
-  setSortBy,
   onChangeSort,
   searchText,
   setSearchText,
@@ -14,8 +14,7 @@ const Header = ({
   exportItems,
 }: {
   sortItems: any;
-  sortBy: any;
-  setSortBy: any;
+  sortBy: TableSortItemType | null;
   onChangeSort: CallableFunction;
   searchText: any;
   setSearchText: any;
@@ -28,9 +27,8 @@ const Header = ({
         <Sort
           sortItems={sortItems}
           sortBy={sortBy}
-          setSortBy={setSortBy}
-          onChangeSort={(e: any) => {
-            console.log("Sort By", e);
+          onChangeSort={(sort: TableSortItemType) => {
+            onChangeSort(sort);
           }}
         />
         <Search

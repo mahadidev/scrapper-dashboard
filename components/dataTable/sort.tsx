@@ -1,15 +1,14 @@
+import { TableSortItemType } from "@/types";
 import { Dropdown } from "flowbite-react";
 import React from "react";
 
 const Sort = ({
   sortItems,
   sortBy,
-  setSortBy,
   onChangeSort,
 }: {
-  sortItems: any;
-  sortBy: any;
-  setSortBy: any;
+  sortItems: TableSortItemType[];
+  sortBy: TableSortItemType | null;
   onChangeSort: CallableFunction;
 }) => {
   return (
@@ -26,15 +25,15 @@ const Sort = ({
             </div>
           }
           onChange={(e) => {
-            console.log(e);
+            onChangeSort(e);
           }}
           arrowIcon={true}
           inline={true}
         >
-          {sortItems?.map((item: any, index: number) => (
+          {sortItems?.map((item: TableSortItemType, index: number) => (
             <Dropdown.Item
               onClick={() => {
-                setSortBy(item);
+                onChangeSort(item);
               }}
               key={index}
             >
